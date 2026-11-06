@@ -1,16 +1,35 @@
-# Compiled class file
+# Maven, Vite and locally generated files
+/target/
+/out/
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+/frontend/.vite-temp/
+/frontend/coverage/
+/META-INF/
+/e2b-process-fdp.pb
 *.class
+*.tsbuildinfo
 
-# Log file
+# Logs and JVM crash reports
 *.log
+hs_err_pid*
+replay_pid*
 
-# BlueJ files
+# IDE and OS metadata
+/.idea/
+/.vscode/
+*.iml
+.classpath
+.project
+.settings/
 *.ctxt
-
-# Mobile Tools for Java (J2ME)
 .mtj.tmp/
+.DS_Store
+Thumbs.db
+Desktop.ini
 
-# Package Files #
+# Packaged artifacts
 *.jar
 *.war
 *.nar
@@ -18,7 +37,27 @@
 *.zip
 *.tar.gz
 *.rar
+!/.mvn/wrapper/maven-wrapper.jar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Local credentials and overrides
+.env
+.env.*
+!.env.example
+!.env.sample
+/config/deep-research-local.properties
+/application-local.*
+/config/application-local.*
+/src/main/resources/application-local.*
+
+# Workspace seeds are versioned separately from tenant data and runtime caches
+/workspace/*
+!/workspace/AGENTS.md
+!/workspace/knowledge/
+/workspace/knowledge/*
+!/workspace/knowledge/RESEARCH_GUIDE.md
+!/workspace/skills/
+/workspace/skills/*
+!/workspace/skills/.gitkeep
+!/workspace/memory/
+/workspace/memory/*
+!/workspace/memory/.gitkeep

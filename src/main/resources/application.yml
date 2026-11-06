@@ -1,0 +1,56 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  config:
+    import: optional:file:./config/deep-research-local.properties
+  application:
+    name: deep-research-agent
+  jackson:
+    default-property-inclusion: non_null
+
+deep-research:
+  agent:
+    name: deep-research-agent
+    model: ${AGENTSCOPE_MODEL:dashscope:qwen3-max}
+    # 从环境变量或本机配置导入 DashScope 凭据。
+    dashscope-api-key: ${DASHSCOPE_API_KEY:}
+    workspace: ${DEEP_RESEARCH_WORKSPACE:./workspace}
+    max-iterations: 16
+    compaction-trigger-messages: 18
+    compaction-keep-messages: 6
+    call-timeout: 5m
+    skill-auto-promote: true
+  features:
+    fallback-model: ${DEEP_RESEARCH_FALLBACK_MODEL:auto}
+    final-answer-only: ${DEEP_RESEARCH_FINAL_ANSWER_ONLY:false}
+    web-tools: ${DEEP_RESEARCH_WEB_TOOLS:false}
+    image-editing: ${DEEP_RESEARCH_IMAGE_EDITING:false}
+    sandbox:
+      backend: ${DEEP_RESEARCH_SANDBOX:local}
+      docker-image: ${DEEP_RESEARCH_DOCKER_IMAGE:}
+      kubernetes-namespace: ${DEEP_RESEARCH_KUBE_NAMESPACE:default}
+      kubernetes-warm-pool: ${DEEP_RESEARCH_KUBE_WARM_POOL:}
+      e2b-api-key: ${E2B_API_KEY:}
+      e2b-template: ${DEEP_RESEARCH_E2B_TEMPLATE:}
+    storage:
+      backend: ${DEEP_RESEARCH_STATE_BACKEND:local}
+      redis-uri: ${DEEP_RESEARCH_REDIS_URI:}
+      postgres-url: ${DEEP_RESEARCH_POSTGRES_URL:}
+      postgres-user: ${DEEP_RESEARCH_POSTGRES_USER:}
+      postgres-password: ${DEEP_RESEARCH_POSTGRES_PASSWORD:}
+      mongodb-uri: ${DEEP_RESEARCH_MONGODB_URI:}
+    mcp:
+      url: ${DEEP_RESEARCH_MCP_URL:}
+      bearer-token: ${DEEP_RESEARCH_MCP_TOKEN:}
+      propagate-metadata: ${DEEP_RESEARCH_MCP_PROPAGATE_METADATA:false}
+    a2a:
+      url: ${DEEP_RESEARCH_A2A_URL:}
+    agui:
+      enabled: ${DEEP_RESEARCH_AGUI_ENABLED:false}
+      bearer-token: ${DEEP_RESEARCH_AGUI_TOKEN:}
+
+logging:
+  level:
+    com.example.deepresearch: INFO
+    io.agentscope: INFO
